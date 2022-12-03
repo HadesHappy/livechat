@@ -1,0 +1,9 @@
+/*===============================================*\
+|| ############################################# ||
+|| # JAKWEB.CH / Version 4.0.2                 # ||
+|| # ----------------------------------------- # ||
+|| # Copyright 2020 JAKWEB All Rights Reserved # ||
+|| ############################################# ||
+\*===============================================*/
+
+function lcjak_groupchatWidget(data){var lcjgroup_container=document.getElementById('jakgroup-chat-container');lcjgroup_container.innerHTML=data.widgethtml;return true}function extractDomainlcg(url){var domain;if(url.indexOf("://")>-1){domain=url.split('/')[2]}else{domain=url.split('/')[0]}domain=domain.split(':')[0];return domain}function createCORSRequestlcg(method,url){var xhr=new XMLHttpRequest();xhr.withCredentials=true;if("withCredentials"in xhr){xhr.open(method,url,true)}else if(typeof XDomainRequest!="undefined"){xhr=new XDomainRequest();xhr.open(method,url)}else{xhr=null}return xhr}(function(w){chatloc=JSON.parse(JSON.stringify(w.lcjUrl));if(extractDomainlcg(w.lcjUrl)==window.location.hostname){var request=new XMLHttpRequest();request.open('GET',chatloc+'include/groupchat.php?id='+w.id,true);request.timeout=3000;request.onload=function(){if(request.status>=200&&request.status<400){var data=JSON.parse(request.responseText);if(data.status){lcjak_groupchatWidget(data);return true}else{console.log(data.error)}}else{}};request.onerror=function(){};request.ontimeout=function(e){};request.send()}else{var url=chatloc+'include/groupchat_cross.php?id='+w.id+'&callback=LiveChatGroupJAK';var request=createCORSRequestlcg('GET',url);if(!request){console.log('CORS not supported');return}request.onload=function(){var data=JSON.parse(request.responseText);if(data.status){lcjak_groupchatWidget(data);return true}else{console.log(data.error)}};request.onerror=function(){console.log('Woops, there was an error making the request.')};request.send()}}(window));

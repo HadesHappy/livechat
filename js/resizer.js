@@ -1,0 +1,9 @@
+/*===============================================*\
+|| ############################################# ||
+|| # JAKWEB.CH / Version 5.0.4                 # ||
+|| # ----------------------------------------- # ||
+|| # Copyright 2022 JAKWEB All Rights Reserved # ||
+|| ############################################# ||
+\*===============================================*/
+
+var btncontis=document.getElementById('lcjframesize');if(btncontis!=null){btncontis.style.visibility="hidden";var show_content=function(e){if(getHostName(e.origin)!==getHostName(cross_url)){return false}message=e.data.split("::");if(message[0]=="customvars"){if(apply_animation.length!=0)btncontis.className+=' '+apply_animation;btncontis.style.visibility="visible"}};if(window.addEventListener){window.addEventListener("message",show_content,false)}else if(window.attachEvent){window.attachEvent("onmessage",show_content)}}var eventMethod=window.addEventListener?"addEventListener":"attachEvent";var eventer=window[eventMethod];var messageEvent=eventMethod==="attachEvent"?"onmessage":"message";eventer(messageEvent,function(e){message=e.data.split("::");if(message[0]=="customvars"){if(!localStorage.getItem('lcjak_customvars'))localStorage.setItem('lcjak_customvars',message[1])}if(message[0]=="lcjak_session"){if(!localStorage.getItem('lcjak_session'))localStorage.setItem('lcjak_session',message[1])}});function getHostName(url){var match=url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);if(match!=null&&match.length>2&&typeof match[2]==='string'&&match[2].length>0){return match[2]}else{return null}}function iframe_resize(width,height,position,origurl){if(parent.postMessage){if(height==9999){rh='100%'}else{rh=height+'px;'}message='iframe_size::'+position+'width:'+width+'px;height:'+rh;parent.postMessage(message,origurl)}}

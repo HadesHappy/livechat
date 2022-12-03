@@ -1,0 +1,18 @@
+#Live Chat 3 Robots File
+#Last change NO 3003021
+
+User-agent: *
+Disallow: /cache/
+Disallow: /include/
+Disallow: /class/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /operator/
+Disallow: /lang/
+Disallow: /js/
+Disallow: /css/
+Disallow: /files/
+Disallow: /lctemplate/
+Disallow: /rest/
+Disallow: /uploader/
+Disallow: /sound/

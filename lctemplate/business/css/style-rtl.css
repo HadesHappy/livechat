@@ -1,0 +1,13 @@
+/* The JAKWEB Business Chat Widget */
+/* Version 1.0 */
+/* https://www.jakweb.ch */
+/* Copyright 2021 */
+
+html {
+  direction: rtl;
+}
+body {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Amiri', sans-serif;
+}
